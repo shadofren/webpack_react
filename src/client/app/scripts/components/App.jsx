@@ -1,14 +1,12 @@
-import React from "react";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-
-class App extends React.Component {
-	render() {
+var App = React.createClass({
+	render(){
 		return (
-			<div>
-				<p>Hello world!</p>
-			</div>
+			<div>Hello</div>
 		);
 	}
-}
+});
 
 export default App;

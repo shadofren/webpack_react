@@ -17,7 +17,16 @@ module.exports = {
 		filename: 'app.bundle.js'
 	},
 	module: {
-		loaders: [{
+		loaders: [
+		{ 
+			test: /bootstrap\/js\//, 
+			loader: 'imports?jQuery=jquery' 
+		},
+      // Needed for the css-loader when [bootstrap-webpack](https://github.com/bline/bootstrap-webpack)
+      // loads bootstrap's css.
+    { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&minetype=application/font-woff" },
+    { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
+    {
 			test: /\.js$/,
 			include: APP_DIR,
 			loader: 'babel-loader',
@@ -30,7 +39,8 @@ module.exports = {
 		{
 			test: /\.css$/, 
 			loader: "style!css"
-		}]
+		},
+		]
 	},
 	plugins: [HtmlWebpackPluginConfig]
 };
